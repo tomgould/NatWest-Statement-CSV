@@ -65,7 +65,7 @@ function parse_raw_array($array) {
 
       $balance = parse_cell_empty($orig_balance);
 
-      $details = parse_description_cell($orig_type, $orig_description);
+      $details = parse_description_cell($type, $orig_description);
 
       $date = explode(' ', $orig_date);
 
@@ -77,10 +77,10 @@ function parse_raw_array($array) {
         parse_cell_empty($orig_in),
         parse_cell_empty($orig_out),
         $balance,
-        empty($details[0]) ? '' : $details[0],
-        empty($details[1]) ? '' : $details[1],
-        empty($details[2]) ? '' : $details[2],
-        empty($details[3]) ? '' : $details[3],
+        $details[0],
+        $details[1],
+        $details[2],
+        $details[3],
       );
     }
   }
@@ -104,7 +104,7 @@ function parse_cell_empty($value) {
   $value = str_replace('£', '', $value);
   $value = str_replace('Â', '', $value);
 
-  return (float) $value;
+  return (float) trim($value);
 }
 
 /**
@@ -118,7 +118,7 @@ function make_the_csv($array) {
   $columns = array(
     'Year',
     'Month',
-    'Dat',
+    'Day',
     'Type',
     'In',
     'Out',

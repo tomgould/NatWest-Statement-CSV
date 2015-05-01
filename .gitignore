@@ -5,4 +5,5 @@ pastebin/statement.*
 nbproject/*
 .idea/*
 
-
+# Ignore tmp files from opening the CSV
+*.~*#
