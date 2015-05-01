@@ -1,0 +1,8 @@
+# Ignore paths that contain user-generated content.
+pastebin/statement.*
+
+# Ignore netbeans stuff
+nbproject/*
+.idea/*
+
+
